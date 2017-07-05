@@ -4,10 +4,12 @@
         'Debian': {
             'package': 'apache2',
             'service': 'apache2',
+            'modulesdir': '/etc/apache2/mods-enabled',
         },
         'RedHat': {
             'package': 'httpd',
             'service': 'httpd',
+            'modulesdir': '',
         },
     },
     grain="os_family",

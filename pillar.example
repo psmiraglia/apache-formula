@@ -1,0 +1,16 @@
+apache:
+    modules:
+        - name: evasive
+          enabled: True
+          package: libapache2-mod-evasive
+        - name: proxy_ajp
+          enabled: True
+          package: libapache2-mod-jk
+        - name: ssl
+          enabled: True
+        - name: status
+          enabled: False
+        - name: info
+          enabled: False
+        - name: autoindex
+          enabled: False
