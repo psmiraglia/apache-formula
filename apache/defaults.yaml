@@ -1,3 +1,4 @@
 apache:
     version: ""
     modules: []
+    config: {}

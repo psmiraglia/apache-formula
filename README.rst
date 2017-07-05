@@ -32,6 +32,33 @@ must contain the keys ``name`` and ``enabled``. Optionally, it could include
 the key ``package`` to specify the name of the package providing the module.
 If missing, the package will be installed.
 
+``apache.config``
+-----------------
+
+Manages the Apache extra configuration files by reading form ``apache:config``
+pillar key, which is  structured as follows
+
+.. code:: yaml
+
+    apache:
+        ...
+        config:
+            98-logformat:
+                enabled: True
+                source: salt://apache/config/logformat.conf.jinja
+                context:
+                    app_id: 'app-123-456'
+            99-security:
+                enabled: True
+                source: salt://apache/config/security.conf
+
+The configuration files will be created in ``extraconfdir`` directory as
+``<name>.conf`` and linked under ``enabledconfdir`` with the name
+``z<name>.conf`` (e.g. ``z99-security.conf``). The ``z`` ensures that custom
+files are parsed at the end.
+
+If ``enabled`` is set to ``False`` the symlink and the file will be deleted.
+
 ``apache.service``
 ------------------
 

@@ -3,14 +3,14 @@ apache:
         - name: evasive
           enabled: True
           package: libapache2-mod-evasive
-        - name: proxy_ajp
+        - name: headers
           enabled: True
-          package: libapache2-mod-jk
-        - name: ssl
-          enabled: True
-        - name: status
-          enabled: False
-        - name: info
-          enabled: False
-        - name: autoindex
-          enabled: False
+    config:
+        98-logformat:
+            enabled: True
+            source: salt://apache/config/logformat.conf.jinja
+            context:
+                app_id: 'app-123-456'
+        99-security:
+            enabled: True
+            source: salt://apache/config/security.conf
