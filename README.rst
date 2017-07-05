@@ -21,6 +21,11 @@ Available states
 Installs the Apache web server package(s) from distro repository. The main
 package version can be specified with pillar key ``apache:version``.
 
+``apache.service``
+------------------
+
+Enables and runs the Apache service.
+
 References
 ==========
 
