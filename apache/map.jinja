@@ -1,0 +1,24 @@
+{% import_yaml "apache/defaults.yaml" as default_settings %}
+
+{% set os_family_map = salt['grains.filter_by']({
+        'Debian': {
+            'package': 'apache2',
+            'service': 'apache2',
+        },
+        'RedHat': {
+            'package': 'httpd',
+            'service': 'httpd',
+        },
+    },
+    grain="os_family",
+    merge=salt['pillar.get']('apache:lookup'))
+%}
+
+{% do default_settings.apache.update(os_family_map) %}
+
+{% set apache = salt['pillar.get'](
+        'apache',
+        default=default_settings.apache,
+        merge=True
+    )
+%}
