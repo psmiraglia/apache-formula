@@ -24,7 +24,7 @@ package version can be specified with pillar key ``apache:version``.
 ``apache.modules``
 ------------------
 
-Only for Debian systems.
+Stable for Debian family systems. Under development for RedHat family systems.
 
 Manages Apache web server modules by reading from ``apache:modules`` pillar
 key (see ``pillar.example``). Each element of the list is a dictionary that

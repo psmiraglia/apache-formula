@@ -1,3 +1,4 @@
+# Debian  example
 apache:
     modules:
         - name: evasive
@@ -5,6 +6,24 @@ apache:
           package: libapache2-mod-evasive
         - name: headers
           enabled: True
+    config:
+        98-logformat:
+            enabled: True
+            source: salt://apache/config/logformat.conf.jinja
+            context:
+                app_id: 'app-123-456'
+        99-security:
+            enabled: True
+            source: salt://apache/config/security.conf
+
+# CentOS example
+apache:
+    modules:
+        - name: security2
+          enabled: True
+          package: mod_security
+        - name: headers
+          enabled: False
     config:
         98-logformat:
             enabled: True
