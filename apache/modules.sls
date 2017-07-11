@@ -8,9 +8,9 @@ install_mod_{{ module.name }}:
         - name: {{ module.package }}
         - require_in:
             {%- if module.enabled %}
-            - apache_module: enable_mod_{{ module.name }}
+            - cmd: enable_mod_{{ module.name }}
             {%- else %}
-            - apache_module: disable_mod_{{ module.name }}
+            - cmd: disable_mod_{{ module.name }}
             {%- endif %}
         {% endif %}
         {% if module.enabled %}
